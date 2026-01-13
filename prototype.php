@@ -4,22 +4,22 @@ function addition($number_1, $number_2 , $math_symbol)
     switch($math_symbol)
  {
     case "+" :
-       echo $number_1 + $number_2 ; 
+       return $number_1 + $number_2 ; 
        break;
     case "-" :
-        echo $number_1 - $number_2 ;
+        return $number_1 - $number_2 ;
         break;
     case "*" :
-        echo $number_1 * $number_2 ;
+        return $number_1 * $number_2 ;
         break;
     case "/" :
-        echo $number_1 / $number_2 ;
+        return $number_1 / $number_2 ;
         break;
     case "%" :
-        echo $number_1 % $number_2 ;
+        return $number_1 % $number_2 ;
         break;
     default ;
-    echo "error please fix it " ;
+    return "error please fix it " ;
  }
 }
 
@@ -36,7 +36,7 @@ echo "Enter the second number pls ";
 $number_2 = (int)trim(fgets(STDIN));
 
 
-echo   addition($number_1, $number_2 ,$math_symbol );
+echo "The result is " . addition($number_1, $number_2 ,$math_symbol ) . "\n";
 
 echo "\ndo you want to retry agin ? please click 0 for y and 1 for n   ";
 $sign = (int)trim(fgets(STDIN));
