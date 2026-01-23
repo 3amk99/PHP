@@ -22,52 +22,59 @@
         <input type="text" name="number_2"><br><br>
         <input type="submit" name="send">
     </form>
-    <?php
+   
+</body>
+</html>
 
-
-
-    function calcumator($number_1 , $number_2 , $math)
+ <?php 
+  if(!isset($_POST['send']))
+  {
+    return ;
+  }
+    function el( $number_1 , $number_2 , $math )
     {
       switch($math)
       {
-       case("+"):
-        return $number_1 + $number_2 ;
-        break;
+        case("+"):
+            return $number_1 + $number_2 ;
+            break ;
 
-        case("-"):
-        return $number_1 - $number_2 ;
-        break;
+            case("-"):
+            return $number_1 - $number_2 ;
+            break ;
 
-        case("*"):
-        return $number_1 * $number_2 ;
-        break;
+            case("*"):
+            return $number_1 * $number_2 ;
+            break ;
 
-        case("/"):
-        return $number_1 / $number_2 ;
-        break;
+            case("/"):
+                if($number_2 == 0 )
+                {
+                    return "we can not devid by 0" ;
+                }
+                else
+                {
+                 return $number_1 / $number_2 ;
+                }
+            break ;
 
-        case("%"):
-        return $number_1 % $number_2 ;
-        break;
-
-        default ;
-        return $result = "error" ;
+            case("%"):
+            return $number_1 + $number_2 ;
+            break ;
       }
     }
-    if(empty($_POST['number_1']) || empty($_POST['number_2']) || empty($_POST['math']) )
+    if(($_POST['number_1']) == "" || ($_POST['number_2']) == "" || empty($_POST['math']))
     {
-       $result = "error_1" ;
+        
+      $result = "error: forget some inputs";
     }
-    else if(!is_numeric($_POST['number_1']) || !is_numeric($_POST['number_2']))
+    else if(!is_numeric($_POST['number_1']) || !is_numeric($_POST['number_2']) )
     {
-     $result = "error_2" ;
+      $result = "error: put number pls ";
     }
     else
     {
-     $result = calcumator($_POST['number_1'] ,$_POST['number_2'] , $_POST['math']);
+     $result = el( $_POST['number_1'] , $_POST['number_2'] , $_POST['math'] );
     }
-
-     echo " $result" ;
-    ?>
-</body>
-</html>
+    echo "$result" ;
+ ?>
